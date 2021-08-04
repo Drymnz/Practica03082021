@@ -18,8 +18,16 @@ public enum Simbolo {
     Coma (","),
     InicioCorchete ("[");
     
+    // constructor
+    
     private String simbolo;
     private Simbolo (String simbolo) {
         this.simbolo = simbolo;
     }
+    // final constructor
+
+    public String getSimbolo() {
+        return simbolo;
+    }
+    
 }

@@ -21,9 +21,15 @@ public enum Numerico {
    siete(7),
    ocho(8),
    nueve(9);
-    
+    // constructor
     private int numerico;
     private Numerico (int numerico) {
         this.numerico = numerico;
     }
+    // fin constructor
+
+    public int getNumerico() {
+        return numerico;
+    }
+    
 }
