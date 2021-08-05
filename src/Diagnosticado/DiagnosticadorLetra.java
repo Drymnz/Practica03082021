@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Diagnosticado;
 
 import Listado.*;
@@ -22,7 +18,7 @@ public class DiagnosticadorLetra {
     }
     public DiagnosticadorLetra(String stringLetra){
         /* 
-        pasara un String, est en char, primero lo pasara todo en mayuscula
+        pasara un String, este en char, primero lo pasara todo en mayuscula
         con el metodo toUpperCase y al final este String pasara con el primer
         caracter a char charAt(0)
         */
