@@ -11,18 +11,20 @@ package Listado;
  */
 public enum Simbolo {
     
-    InicioLlaves ("{"),
-    FinalLlaves ("}"),
-    FinalCorchete ("]"),
-    PuntoComa (";"),
-    Coma (","),
-    InicioCorchete ("[");
+    InicioLlaves ("{",123),
+    FinalLlaves ("}",125),
+    FinalCorchete ("]",93),
+    PuntoComa (";",59),
+    Coma (",",44),
+    InicioCorchete ("[",91);
     
     // constructor
     
     private String simbolo;
-    private Simbolo (String simbolo) {
+    private int codigoAscii;
+    private Simbolo (String simbolo,int codigoAscii) {
         this.simbolo = simbolo;
+        this.codigoAscii = codigoAscii;
     }
     // final constructor
 
