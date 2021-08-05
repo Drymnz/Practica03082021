@@ -28,7 +28,7 @@ public enum Numerico {
     }
     // fin constructor
 
-    public int getNumerico() {
+    public int getCodigoAscii() {
         return codigoAscii;
     }
     

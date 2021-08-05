@@ -31,5 +31,9 @@ public enum Simbolo {
     public String getSimbolo() {
         return simbolo;
     }
+
+    public int getCodigoAscii() {
+        return codigoAscii;
+    }
     
 }
