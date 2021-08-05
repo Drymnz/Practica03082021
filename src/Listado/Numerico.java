@@ -11,25 +11,25 @@ package Listado;
  */
 public enum Numerico {
     
-   cero(0),
-   uno(1),
-   dos(2),
-   tres(3),
-   cuatro(4),
-   cinco(5),
-   seis(6),
-   siete(7),
-   ocho(8),
-   nueve(9);
+   cero(48),
+   uno(49),
+   dos(50),
+   tres(51),
+   cuatro(52),
+   cinco(53),
+   seis(54),
+   siete(55),
+   ocho(56),
+   nueve(57);
     // constructor
-    private int numerico;
-    private Numerico (int numerico) {
-        this.numerico = numerico;
+    private int codigoAscii;
+    private Numerico (int codigoAscii) {
+        this.codigoAscii = codigoAscii;
     }
     // fin constructor
 
     public int getNumerico() {
-        return numerico;
+        return codigoAscii;
     }
     
 }
