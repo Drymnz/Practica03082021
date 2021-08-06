@@ -13,7 +13,7 @@ public class DiagnosticoOracion {
 
     private final String separador = "---";
     private String oracion;
-    private DiagnosticadorDePalabras verificarPalabra = new DiagnosticadorDePalabras("hola");
+    private DiagnosticadorDePalabras verificarPalabra = new DiagnosticadorDePalabras("hola51");
     /*
     0 identificador
     1 entero
@@ -35,8 +35,11 @@ public class DiagnosticoOracion {
         String verificar = this.oracion;
         String[] ver = cortarPalabras(oracion, " ");
         for (int i = 0; i < ver.length; i++) {
-            verificarPalabra.setPalabra(ver[i]);
-            verificarEstructura(ver[i]);
+            if (ver[i] != null) {
+                verificarPalabra.setPalabra(ver[i]);
+                verificarEstructura(ver[i]);
+            }
+
         }
     }
 

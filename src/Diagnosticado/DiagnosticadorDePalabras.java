@@ -22,7 +22,7 @@ public class DiagnosticadorDePalabras {
     }
 
     public DiagnosticadorDePalabras(String palabra) {
-        this(palabra, null);
+        this(palabra, new DiagnosticadorLetra("1"));
         verificador();
     }
 
