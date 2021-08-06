@@ -5,13 +5,18 @@
  */
 package Interfas;
 
+import Diagnosticado.DiagnosticoOracion;
+import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.JLabel;
 
 /**
  *
  * @author drymnz
  */
 public class Menu extends javax.swing.JFrame {
+
+    DiagnosticoOracion motor;
 
     /**
      * Creates new form Menu
@@ -48,7 +53,7 @@ public class Menu extends javax.swing.JFrame {
         JLabelSimbolo = new javax.swing.JLabel();
         LedSimbolo = new Led.Led();
         JLabelError = new javax.swing.JLabel();
-        led1 = new Led.Led();
+        LedError = new Led.Led();
         JLabelDiagnosticoEntero = new javax.swing.JLabel();
         JLabelDiagnosticoDecimal = new javax.swing.JLabel();
         JLabelDiagnosticoIdentificador = new javax.swing.JLabel();
@@ -60,6 +65,11 @@ public class Menu extends javax.swing.JFrame {
         JLabelDecir.setText("Ingresar texto:");
 
         JButtonVerificar.setText("Verificar");
+        JButtonVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonVerificarActionPerformed(evt);
+            }
+        });
 
         JLabelNumeroEntero.setText("Numero Entero");
 
@@ -115,14 +125,14 @@ public class Menu extends javax.swing.JFrame {
 
         JLabelError.setText("Error");
 
-        javax.swing.GroupLayout led1Layout = new javax.swing.GroupLayout(led1);
-        led1.setLayout(led1Layout);
-        led1Layout.setHorizontalGroup(
-            led1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout LedErrorLayout = new javax.swing.GroupLayout(LedError);
+        LedError.setLayout(LedErrorLayout);
+        LedErrorLayout.setHorizontalGroup(
+            LedErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 32, Short.MAX_VALUE)
         );
-        led1Layout.setVerticalGroup(
-            led1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        LedErrorLayout.setVerticalGroup(
+            LedErrorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -161,7 +171,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(LedEntero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LedIdentificador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(LedSimbolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(led1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LedError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JLabelDiagnosticoEntero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -210,7 +220,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(led1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LedError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(JLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(JLabelDiagnosticoError))
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -218,6 +228,27 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JButtonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonVerificarActionPerformed
+        // TODO add your handling code here:
+        if (!JTextFieldEntrada.getText().trim().equals("")) {
+            motor = new DiagnosticoOracion(JTextFieldEntrada.getText());
+            cambiarColorLed(0, JLabelDiagnosticoIdentificador, LedIdentificador);
+            cambiarColorLed(1, JLabelDiagnosticoEntero, LedEntero);
+            cambiarColorLed(2, JLabelDiagnosticoDecimal, LedDecimal);
+            cambiarColorLed(3, JLabelDiagnosticoSimbolo, LedSimbolo);
+            cambiarColorLed(4, JLabelDiagnosticoError, LedError);
+        }
+    }//GEN-LAST:event_JButtonVerificarActionPerformed
+    private void cambiarColorLed(int posicion, JLabel JLabelDiagnostico, Led.Led led) {
+        if (motor.getDiagnosticoListado()[posicion] != null) {
+            led.setColor(Color.green);
+            JLabelDiagnostico.setText(motor.getDiagnosticoListado()[posicion]);
+        } else {
+            led.setColor(Color.RED);
+            JLabelDiagnostico.setText(motor.getDiagnosticoListado()[posicion]);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonVerificar;
@@ -235,8 +266,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField JTextFieldEntrada;
     private Led.Led LedDecimal;
     private Led.Led LedEntero;
+    private Led.Led LedError;
     private Led.Led LedIdentificador;
     private Led.Led LedSimbolo;
-    private Led.Led led1;
     // End of variables declaration//GEN-END:variables
 }

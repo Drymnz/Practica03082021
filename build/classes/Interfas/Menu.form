@@ -46,7 +46,7 @@
                           <Component id="LedEntero" min="-2" max="-2" attributes="0"/>
                           <Component id="LedIdentificador" max="32767" attributes="0"/>
                           <Component id="LedSimbolo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="led1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LedError" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -112,7 +112,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="led1" max="32767" attributes="0"/>
+                      <Component id="LedError" max="32767" attributes="0"/>
                       <Component id="JLabelError" max="32767" attributes="0"/>
                   </Group>
                   <Component id="JLabelDiagnosticoError" min="-2" max="-2" attributes="0"/>
@@ -132,6 +132,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Verificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JButtonVerificarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTextFieldEntrada">
     </Component>
@@ -220,7 +223,7 @@
         <Property name="text" type="java.lang.String" value="Error"/>
       </Properties>
     </Component>
-    <Container class="Led.Led" name="led1">
+    <Container class="Led.Led" name="LedError">
 
       <Layout>
         <DimensionLayout dim="0">

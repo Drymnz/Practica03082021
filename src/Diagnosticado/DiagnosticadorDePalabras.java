@@ -13,15 +13,16 @@ public class DiagnosticadorDePalabras {
     1 LETRA
     2 SIMBOLO
      */
-    private boolean[] diagnosticoListado = {false,false,false};
+    private boolean[] diagnosticoListado = {false, false, false};
 
     // constructor
-    public DiagnosticadorDePalabras(String palabra, DiagnosticadorLetra diagnostico) {    
+    public DiagnosticadorDePalabras(String palabra, DiagnosticadorLetra diagnostico) {
         this.palabra = palabra;
         this.diagnostico = diagnostico;
     }
-    public DiagnosticadorDePalabras(String palabra){
-        this(palabra,null);
+
+    public DiagnosticadorDePalabras(String palabra) {
+        this(palabra, null);
         verificador();
     }
 
@@ -32,7 +33,7 @@ public class DiagnosticadorDePalabras {
         verifcar = verifcar.toUpperCase();
         int[] posicionAnterior = new int[diagnosticoListado.length];
         for (int i = 0; i < palabra.length(); i++) {
-            diagnostico = new DiagnosticadorLetra(verifcar.substring(i,i+1));
+            diagnostico = new DiagnosticadorLetra(verifcar.substring(i, i + 1));
             switch (diagnostico.esSimbolo() ? 1 : diagnostico.esNumero() ? 2 : diagnostico.esLetra() ? 3 : 4) {
                 case 1:
                     diagnosticoListado[2] = true;
@@ -56,8 +57,8 @@ public class DiagnosticadorDePalabras {
         this.palabra = palabra;
         verificador();
     }
-    
-    private void refrescarDiagnostico(){
+
+    private void refrescarDiagnostico() {
         for (int i = 0; i < diagnosticoListado.length; i++) {
             diagnosticoListado[i] = false;
         }
@@ -66,6 +67,5 @@ public class DiagnosticadorDePalabras {
     public boolean[] getDiagnosticoListado() {
         return diagnosticoListado;
     }
-    
-    
+
 }

@@ -19,6 +19,7 @@ public class DiagnosticoOracion {
     1 entero
     2 decimal
     3 simbolos
+    4 error
      */
     private String[] diagnosticoListado = new String[5];
 
@@ -122,6 +123,11 @@ public class DiagnosticoOracion {
 
     public String[] getDiagnosticoListado() {
         return diagnosticoListado;
+    }
+
+    public void setOracion(String oracion) {
+        this.oracion = oracion;
+        verificar();
     }
 
 }
