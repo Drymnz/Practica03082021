@@ -11,6 +11,7 @@ package Diagnosticado;
  */
 public class DiagnosticoOracion {
 
+    private final String separador = "---";
     private String oracion;
     private DiagnosticadorDePalabras verificarPalabra = new DiagnosticadorDePalabras("hola");
     /*
@@ -83,7 +84,7 @@ public class DiagnosticoOracion {
         if (diagnosticoListado[posicionArreglo] == null) {
             diagnosticoListado[posicionArreglo] = agregar;
         } else {
-            diagnosticoListado[posicionArreglo] += "," + agregar;
+            diagnosticoListado[posicionArreglo] += separador + agregar;
         }
     }
 
