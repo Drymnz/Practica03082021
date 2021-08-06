@@ -36,13 +36,6 @@ public class DiagnosticoOracion {
             verificarPalabra.setPalabra(ver[i]);
             verificarEstructura(ver[i]);
         }
-        pruevaIMpremir(ver);
-    }
-
-    private void pruevaIMpremir(String[] a) {
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
-        }
     }
 
     // esturctura de palabras
@@ -53,23 +46,26 @@ public class DiagnosticoOracion {
     2 SIMBOLO
          */
         boolean simbolo = verificarPalabra.getDiagnosticoListado()[2];
+        // para verficar que posee un punto
+        String[] cor = cortarPalabras(agregar, ".");
+        boolean decimal = verificarPalabra.getDiagnosticoListado()[0] && verificarPalabra.getDiagnosticoListado()[1] && ((cor.length) == 2) && cor[0] != null;
         boolean identificador = !simbolo;
-        boolean decimal = !verificarPalabra.getDiagnosticoListado()[1] && verificarPalabra.getDiagnosticoListado()[0];
-        boolean entero = verificarPalabra.getDiagnosticoListado()[0] && !decimal;
-        switch (simbolo ? 1 : identificador ? 2 : decimal ? 3 : entero ? 4 : 5) {
-            case 1:
+        boolean entero = verificarPalabra.getDiagnosticoListado()[0] && !decimal && verificarPalabra.getDiagnosticoListado()[1];
+        switch (simbolo ? 1 : decimal ? 2 : entero ? 3 : identificador ? 4 : 5) {
+            case 1:// simbolo
                 agregar(3, agregar);
                 break;
-            case 2:
-                agregar(0, agregar);
-                break;
-            case 3:
+            case 2:// decimal
                 agregar(2, agregar);
                 break;
-            case 4:
+            case 3:// entero
                 agregar(1, agregar);
+                agregar(0, agregar);
                 break;
-            case 5:
+            case 4:// identificador
+                agregar(0, agregar);
+                break;
+            case 5:// error
                 agregar(4, agregar);
                 break;
         }
