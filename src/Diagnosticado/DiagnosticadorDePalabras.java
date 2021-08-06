@@ -7,57 +7,65 @@ package Diagnosticado;
 public class DiagnosticadorDePalabras {
 
     private String palabra;
-    private int cantidadCaracterPalabra;
     private DiagnosticadorLetra diagnostico;
     /*
-    0 identificador
-    1 entero
-    2 decimal
-    3 simbolos
+    0 NUMERO
+    1 LETRA
+    2 SIMBOLO
      */
-    private String[] diagnosticoListado = new String[4];
+    private boolean[] diagnosticoListado = {false,false,false};
 
     // constructor
+    public DiagnosticadorDePalabras(String palabra, DiagnosticadorLetra diagnostico) {    
+        this.palabra = palabra;
+        this.diagnostico = diagnostico;
+    }
+    public DiagnosticadorDePalabras(String palabra){
+        this(palabra,null);
+        verificador();
+    }
+
     //final constructor
     //verificador
     private void verificador() {
-        String verifcar = copiaPalabra(this.palabra);
+        String verifcar = this.palabra;
         verifcar = verifcar.toUpperCase();
-        int[] posicionAnterior = new int [diagnosticoListado.length];
+        int[] posicionAnterior = new int[diagnosticoListado.length];
         for (int i = 0; i < palabra.length(); i++) {
-            diagnostico = new DiagnosticadorLetra(verifcar.substring(i));
-            if (diagnostico.esSimbolo()) {
-                agregar(3, i, posicionAnterior[3], palabra.substring(i));
-                posicionAnterior[3] ++;
-            }else {
-                if (diagnostico.esLectra() || diagnostico.esNumero()) {
-                    // si es identificador
-                }
- 
+            diagnostico = new DiagnosticadorLetra(verifcar.substring(i,i+1));
+            switch (diagnostico.esSimbolo() ? 1 : diagnostico.esNumero() ? 2 : diagnostico.esLetra() ? 3 : 4) {
+                case 1:
+                    diagnosticoListado[2] = true;
+                case 2:
+                    diagnosticoListado[1] = true;
+                case 3:
+                    diagnosticoListado[0] = true;
+                    break;
             }
         }
     }
-    // aqui verificar si la letra anterio sigue con la siguiente en verificar
-    private void agregar (int posicionArreglo, int posicion,int posicionAnterior, String agregar){
-        if (posicion == posicionAnterior) {
-            diagnosticoListado [posicionArreglo] += agregar;
-        }else {
-            diagnosticoListado [posicionArreglo] += "," +agregar ;
-        }
-    }
-    // una copia de la palabra para trabajar sobre ella
-    private String copiaPalabra(String copiarPalabra) {
-        String volver = "";
-        for (int i = 0; i < copiarPalabra.length(); i++) {
-            volver += copiarPalabra.substring(i);
-        }
-        volver = volver.replaceAll("\\n", " ");
-        return volver;
+    // final verificador
+    // get y set
+
+    public String getPalabra() {
+        return palabra;
     }
 
-    // final verificador
-    // verificar estructura
+    public void setPalabra(String palabra) {
+        refrescarDiagnostico();
+        this.palabra = palabra;
+        verificador();
+    }
     
-    //fin verificar estructura
+    private void refrescarDiagnostico(){
+        for (int i = 0; i < diagnosticoListado.length; i++) {
+            diagnosticoListado[i] = false;
+        }
+    }
+
+    public boolean[] getDiagnosticoListado() {
+        return diagnosticoListado;
+    }
+    
     
 }

@@ -26,7 +26,7 @@ public class DiagnosticadorLetra {
     }
     //final constructor
     // verificadores de listado
-    public boolean esLectra(){
+    public boolean esLetra(){
         Letra[] lestras = Letra.values();
         for (int i = 0; i < lestras.length; i++) {
             if (lestras[i].getCodigoAscii() == Character.valueOf(charLetra)) {
